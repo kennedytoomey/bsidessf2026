@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css">
+  <title>When the Supply Chain Hits a Sour Note | BSidesSF 2026</title>
+  <script>
+  (function(h,o,u,n,d) {
+    h = h[d] = h[d] || { q: [], onReady: function (c) { h.q.push(c) } }
+    d = o.createElement(u); d.async = 1; d.src = n; d.crossOrigin=''
+    n = o.getElementsByTagName(u)[0]; n.parentNode.insertBefore(d, n)
+  })(window, document, 'script', 'https://www.datadoghq-browser-agent.com/us1/v6/datadog-rum.js', 'DD_RUM')
+
+  window.DD_RUM.onReady(function () {
+    window.DD_RUM.init({
+      applicationId: 'cab60d9a-6ad0-4f4c-85dc-7d83567a6851',
+      clientToken: 'pub116a983b2f311484ef0480916ae0bc50',
+      site: 'datadoghq.com',
+      service: '<SERVICE-NAME>',
+      env: '<ENV-NAME>',              // e.g. 'prod', 'staging-1', 'dev'
+      version: '<VERSION-NUMBER>',      // e.g. '1.0.0'
+      sessionSampleRate: 100,          // capture 100% of sessions
+      sessionReplaySampleRate: 20,     // capture 20% of sessions with replay
+      trackResources: true,            // Enable Resource tracking
+      trackUserInteractions: true,     // Enable Action tracking
+      trackLongTasks: true,            // Enable Long Tasks tracking
+
+      // ----- Recommended options (commented by default) -----
+
+      // allowedTracingUrls: '<BACKEND-URL>', // Enable distributed tracing
+      // defaultPrivacyLevel: 'mask-user-input', // or 'allow' / 'mask-all'
+    });
+  });
+</script>
+</head>
+<body>
+
+<header>
+  <a href="https://bsidessf.org" target="_blank" rel="noopener">
+    <img src="BSidesSF_2026_Logo-Border.png" alt="BSidesSF 2026" style="height:40px; display:block;">
+  </a>
+</header>
+
+<!-- HERO -->
+<div class="hero-wrap">
+<section class="hero">
+  <p class="hero-eyebrow">Talk · Application Security · Supply Chain Security</p>
+  <h1>When the Supply Chain<br>Hits a <span>Sour Note</span></h1>
+  <p class="hero-sub">
+    Real-world supply chain attacks, incident response under pressure, cross-functional chaos,
+    and the proactive defenses that actually shrink your blast radius.
+  </p>
+  <div class="hero-actions">
+    <a href="When_the_supply_chain_hits_a_sour_note.pdf" class="btn btn-primary" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+      View Slides
+    </a>
+    <a href="https://youtube.com/playlist?list=PL42XJi8OUtYyJIi9C2VZADZYWxP0PsSKF&si=cEXzqcdgxZOyLH3t" class="btn btn-outline" target="_blank" rel="noopener">Listen to the Playlist</a>
+    <a href="#overview" class="btn btn-outline">Talk Highlights</a>
+  </div>
+</section>
+</div>
+
+<!-- SPEAKER BAR -->
+<div class="speaker-bar">
+  <div class="speaker-bar-inner">
+    <img src="dd_icon_white.png" alt="Datadog" style="height:32px; display:block;">
+    <div class="speaker-info">
+      <strong>Kennedy Toomey</strong>
+      <span>Application Security Researcher &amp; Advocate @ Datadog</span>
+    </div>
+    <div class="speaker-links">
+      <a class="speaker-linkedin" href="https://www.linkedin.com/in/kennedy-toomey" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.88v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z"/></svg>
+        LinkedIn
+      </a>
+      <a class="speaker-linkedin" href="https://kennedytoomey.github.io/" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        Website
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main id="overview">
+
+  <p class="section-label">Talk Overview</p>
+  <h2 class="section-title">The Set List</h2>
+  <p class="section-desc">
+    Every section is related to a song — because even supply chain disasters deserve a soundtrack.
+    <a href="https://youtube.com/playlist?list=PL42XJi8OUtYyJIi9C2VZADZYWxP0PsSKF&si=cEXzqcdgxZOyLH3t" target="_blank" rel="noopener">Listen to the playlist →</a>
+  </p>
+
+  <div class="track">
+
+    <!-- 01 -->
+    <div class="track-item featured">
+      <div class="track-item-inner">
+        <div class="track-number">01 · Intro</div>
+        <div class="track-song">"Who's Afraid of Little Old Me?"</div>
+        <h3 class="track-heading">The Silent Threat</h3>
+        <div class="track-body">
+          <p>An npm package configured to upgrade automatically. Everything is working great. Then a new version is released. No one thinks twice about it.</p>
+          <p>This is the story of what happens when that silent assumption breaks at scale.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">02 · Case Studies</div>
+        <div class="track-song">"Another One Bites the Dust"</div>
+        <h3 class="track-heading">Four Connected Attacks</h3>
+        <div class="track-body">
+          <div class="cases">
+            <div class="case-card">
+              <div class="case-name">s1ngularity</div>
+              <div class="case-date">August 26, 2025</div>
+              <ul>
+                <li>Targeted Nx</li>
+                <li>Exploited a vulnerable GitHub Actions workflow</li>
+                <li>Deployed a credential-harvesting malware script</li>
+                <li>Resulted in <strong>2,000+ leaked secrets</strong></li>
+              </ul>
+            </div>
+            <div class="case-card">
+              <div class="case-name">debug / chalk</div>
+              <div class="case-date">September 8, 2025</div>
+              <ul>
+                <li>Targeted npm maintainer known as Qix</li>
+                <li>Gained access via phishing email</li>
+                <li>Malicious code functioned as a <strong>crypto stealer</strong></li>
+              </ul>
+            </div>
+            <div class="case-card">
+              <div class="case-name">Shai-Hulud 1.0</div>
+              <div class="case-date">September 16, 2026</div>
+              <ul>
+                <li>Used <strong>unrotated tokens</strong> from the s1ngularity breach</li>
+                <li>Self-replicating worm</li>
+                <li>Exfiltrated secrets and exposed private repos</li>
+              </ul>
+            </div>
+            <div class="case-card">
+              <div class="case-name">Shai-Hulud 2.0</div>
+              <div class="case-date">November 24, 2025</div>
+              <ul>
+                <li>Backdoored <strong>796 unique npm packages</strong></li>
+                <li>Leaked data from <strong>500+ GitHub users</strong></li>
+                <li>Self-replicating worm</li>
+              </ul>
+            </div>
+          </div>
+          <div class="track-resources">
+            <strong>Further Reading</strong>
+            <ul>
+              <li><a href="https://securitylabs.datadoghq.com/articles/learnings-from-recent-npm-compromises/" target="_blank" rel="noopener">Learnings from Recent npm Compromises</a></li>
+              <li><a href="https://securitylabs.datadoghq.com/articles/shai-hulud-2.0-npm-worm/" target="_blank" rel="noopener">Shai-Hulud 2.0: npm Worm</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">03 · Architecture</div>
+        <div class="track-song">"Chain of Fools"</div>
+        <h3 class="track-heading">The Architecture of Dependencies</h3>
+        <div class="track-body">
+          <p>Dependencies are all interconnected, each relying on tens of transitive dependencies. A single point of failure doesn't stay contained. It propagates.</p>
+          <p>Understanding the blast radius before the incident is the only way to reason about it during one.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">04 · Incident Response</div>
+        <div class="track-song">"Manic Monday"</div>
+        <h3 class="track-heading">Responding When It's Already on Fire</h3>
+        <div class="track-body">
+          <p><strong>What happened?</strong> New information is being released constantly. Stay up to date.</p>
+          <p><strong>Are you affected?</strong> Does an SBOM exist? Is it current? This is the moment you find out if your inventory is real.</p>
+          <p><strong>Stay organized.</strong></p>
+          <ul>
+            <li>Create a centralized tracking sheet immediately</li>
+            <li>Assign clear responsibilities so nothing falls between teams</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">05 · Incident Response</div>
+        <div class="track-song">"Under Pressure"</div>
+        <h3 class="track-heading">Three Things Happening at Once</h3>
+        <div class="track-body">
+          <ul>
+            <li>Leadership wants answers</li>
+            <li>Customers want to know their impact</li>
+            <li>New information keeps being released</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">06 · Collaboration</div>
+        <div class="track-song">"Come Together"</div>
+        <h3 class="track-heading">The Response Triangle</h3>
+        <div class="track-body">
+          <p>Supply chain incidents don't stay in one team's lane.</p>
+          <div class="triangle">
+            <div class="tri-node">Developers</div>
+            <div class="tri-node">DevOps</div>
+            <div class="tri-node">Security</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">07 · Collaboration</div>
+        <div class="track-song">"Hello (from the other side)"</div>
+        <h3 class="track-heading">Light at the End of the Tunnel</h3>
+        <div class="track-body">
+          <p>You've made it through the initial response, but it is not over yet.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">08 · Collaboration</div>
+        <div class="track-song">"The Show Must Go On"</div>
+        <h3 class="track-heading">Competing Urgencies</h3>
+        <div class="track-body">
+          <div class="urgency-split">
+            <div class="urgency-block">
+              <div class="urgency-label">Security Urgency</div>
+              Response remains top priority for security teams.
+            </div>
+            <div class="urgency-block">
+              <div class="urgency-label">Operational Urgency</div>
+              Developement doesn't stop, pipelines need to run, customers are waiting. Other teams have to go back to their regular responsibilities.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">09 · Collaboration</div>
+        <div class="track-song">"I'm Still Standing"</div>
+        <h3 class="track-heading">Coming Out the Other Side</h3>
+        <div class="track-body">
+          <p>Cross-functional incidents are exhausting. But you get through them — and the teams that do it well come out stronger and better coordinated than before.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">10 · Proactive Defense</div>
+        <div class="track-song">"You Can't Always Get What You Want"</div>
+        <h3 class="track-heading">Before the Incident Happens</h3>
+        <div class="track-body">
+          <p>Guiding principles: <strong>Least Privilege</strong> and <strong>Defense in Depth</strong>. The goal is a reduced attack surface — not perfect security.</p>
+          <div class="checklist">
+            <div class="check">
+              <div class="check-box"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2" stroke="#7c3aed" stroke-width="1.5" fill="none"/></svg></div>
+              <span><strong>Fine-Grained Access Tokens (FGAT)</strong> — limit the blast radius of any single compromised credential</span>
+            </div>
+            <div class="check">
+              <div class="check-box"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2" stroke="#7c3aed" stroke-width="1.5" fill="none"/></svg></div>
+              <span><strong>Multi-Factor Authentication (MFA)</strong> — on every account with publishing rights</span>
+            </div>
+            <div class="check">
+              <div class="check-box"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2" stroke="#7c3aed" stroke-width="1.5" fill="none"/></svg></div>
+              <span><strong>Minimum package age requirements</strong> — don't auto-upgrade to a package published five minutes ago</span>
+            </div>
+          </div>
+          <div class="track-resources">
+            <strong>Further Reading</strong>
+            <ul>
+              <li><a href="https://www.datadoghq.com/blog/engineering/stopping-hackerbot-claw-with-bewaire/" target="_blank" rel="noopener">Stopping HackerBot Claw with Bewaire</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">11 · Post-Mortem</div>
+        <div class="track-song">"Stronger (What Doesn't Kill You)"</div>
+        <h3 class="track-heading">The Debrief</h3>
+        <div class="track-body">
+          <p><strong>What went well? What didn't?</strong></p>
+          <ul>
+            <li>Did you have an easy way to find vulnerable versions across your stack?</li>
+            <li>Did you face friction from supporting teams during the response?</li>
+            <li>Did you have a communications plan in place — or were you making it up?</li>
+          </ul>
+          <p style="margin-top: 0.75rem;"><strong>What can be improved for next time?</strong> Make a concrete plan to fix anything that didn't go well. Before the next incident starts.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">12 · Documentation</div>
+        <div class="track-song">"Why Do You Write Like You're Running Out of Time?"</div>
+        <h3 class="track-heading">Making It Repeatable</h3>
+        <div class="track-body">
+          <ul>
+            <li><strong>Document the response efforts</strong> — every step, every decision, every escalation</li>
+            <li><strong>Create templates for communications</strong> — so the next incident doesn't start from a blank page</li>
+            <li><strong>Write SOPs</strong> on what to do in similar situations</li>
+            <li><strong>Communicate results</strong> with stakeholders and customers — close the loop</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">13 · Team Morale</div>
+        <div class="track-song">"Friends in Low Places"</div>
+        <h3 class="track-heading">Wellness Check</h3>
+        <div class="track-body">
+          <p>Take time to breathe after an incident. Response efforts can be stressfull, check on your teammates.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">14 · Team Morale</div>
+        <div class="track-song">"It's Five O'Clock Somewhere"</div>
+        <h3 class="track-heading">The Human Element</h3>
+        <div class="track-body">
+          <div class="stats">
+            <div class="stat">
+              <strong>99%</strong>
+              of people appreciate being thanked for their hard work after an incident
+            </div>
+            <div class="stat">
+              <strong>0%</strong>
+              of people will turn down free food delivery
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15 -->
+    <div class="track-item">
+      <div class="track-item-inner">
+        <div class="track-number">15 · Outro</div>
+        <div class="track-song">"What Comes Next? (Soon You'll See)"</div>
+        <h3 class="track-heading">There will always be another event</h3>
+        <div class="track-body">
+          <p>We don't know when the next attack will happen. The best thing we can do is make sure we are prepared.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SLIDES CTA -->
+  <div class="slides-cta" id="slides">
+    <div class="slides-text">
+      <strong>Presentation Slides</strong>
+      <span>Full deck from BSidesSF 2026</span>
+    </div>
+    <a href="When_the_supply_chain_hits_a_sour_note.pdf" class="btn btn-primary" target="_blank" rel="noopener">
+      Download PDF
+    </a>
+  </div>
+
+  <!-- LEARN MORE -->
+  <div class="learn-more-section">
+    <div class="learn-more-inner">
+      <img src="dd_icon_white.png" alt="Datadog" style="height:36px; display:block; opacity:0.9;">
+      <div class="learn-more-text">
+        <strong>Want to learn more from other Datadog Security Researchers?</strong>
+        <p>Datadog Security Labs publishes original security research, threat intelligence, and in-depth technical analysis.</p>
+      </div>
+      <a href="https://securitylabs.datadoghq.com/" class="btn btn-primary" target="_blank" rel="noopener">
+        Visit Security Labs →
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    Presented at <a href="https://bsidessf.org" target="_blank" rel="noopener">BSidesSF 2026</a>
+    &nbsp;·&nbsp;
+    Kennedy Toomey
+    &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/kennedy-toomey" target="_blank" rel="noopener">LinkedIn</a>
+    &nbsp;·&nbsp;
+    <a href="https://kennedytoomey.github.io/" target="_blank" rel="noopener">Website</a>
+  </p>
+</footer>
+
+</body>
+</html>
